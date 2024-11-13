@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+{% block content %}
+
+
+
+<form class="container" action="/bill_page/" method="POST">
+    {% csrf_token %}
+    <div class="text-end pe-auto mb-4">
+        <button class="btn btn-outline-success">Cart <i class="bi bi-cart"></i></button>
+    
+    </div>
+<div class="row justify-content-start">
+
+
+{% for item in grocery_list %}
+<div class="col-md-3 mb-4">
+    <div class="card" style="width: 15rem;height:30rem;">
+        <img class="card-img-top" style="height:40%;" src="{{item.image_url}}" alt=" {{item.name}} Image N/A">
+        <div class="card-body">
+
+            <h5 class="card-title">{{item.name}}</h5>
+            <p class="card-text">Quantity : {{item.quantity}}</p>
+            <p class="card-text">Type : {{item.grocery_type}}</p>
+            <p class="card-text">Stock : <span style="color:#dc3545;">{{item.stock}} remaining</span></p>
+            <p class="card-text">Price : <span class="rupee">&#8377;</span><i>{{item.price}}</i></p>
+            <input class="form-control" type="number" name="{{item.name}}" step="1" value="0">
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<div class="submit-btn">
+    <input class="btn btn-outline-primary" type="submit" name="" id="" value="Make Payment">
+</div>
+</form>
+{% endblock content %}
+

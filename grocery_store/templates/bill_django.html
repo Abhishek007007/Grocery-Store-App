@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+ {% block content %} 
+
+ <div class="bill-page">
+    <div class="bill-card">
+        <h1>Bill</h1>
+        <table class="table table-light table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Count</th>
+                    <th>Price</th>
+                    <th>Overall Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item_name, item_data in selected_items.items %}
+                <tr>
+                    <td>{{item_name}}</td>
+                    <td>{{item_data.item_count}}</td>
+                    <td>{{item_data.item_price}}</td>
+                    <td>{{item_data.overall_price}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td><strong><span class="rupee">&#8377;</span>{{total_price}}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+ </div>
+
+ 
+ {% endblock content %}

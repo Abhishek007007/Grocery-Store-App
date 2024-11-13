@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container w-auto">
+  <form
+    action=""
+    method="POST"
+    class="form-control d-flex flex-column align-items-left justify-content-center"
+  >
+    {% csrf_token %} {% for field in form %}
+    <div>
+      <label> {{ field.label_tag }} </label>
+      <div>{{ field }}</div>
+    </div>
+    <div class="form-errors-ul">{{ field.errors }}</div>
+
+    {% endfor %}
+    <input class="form-control" type="submit" />
+  </form>
+</div>
+{% endblock content %}
